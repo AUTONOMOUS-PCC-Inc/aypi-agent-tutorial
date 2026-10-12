@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/AUTONOMOUS-PCC-Inc/.github/main/mirrors/assets/agent-banner.svg" alt="바이브코딩 캠프 3회차 — 매주 반복하는 일 하나를 에이전트에게 넘긴다. 오전엔 코드로, 오후엔 노코드로." width="100%">
+
 ### 매주 반복하는 일 하나를, 오늘 안에 에이전트에게 넘긴다.
 
 AUTONOMOUS PCC 바이브코딩 캠프 **3회차(자동화 에이전트 개발)** 실습 저장소입니다.<br>
@@ -43,17 +45,12 @@ cd aypi-agent-tutorial
 
 ## 폴더 지도
 
-```
-aypi-agent-tutorial/
-├─ AGENTS.md          ← Codex에게 매번 설명하지 않으려고 적어 둔 상설 맥락
-├─ codex-demo/        ← 오전. 일부러 깨 둔 프로그램
-│   ├─ daily_report.py      ← 고쳐야 할 파일 (고치는 건 Codex)
-│   ├─ data/logs.csv        ← 건드리지 않는다
-│   └─ tests/               ← 건드리지 않는다. 이게 명세다
-├─ n8n/               ← 오후. 워크플로우 JSON
-│   └─ rail-skeleton.json   ← 전원이 똑같이 한 번 돌릴 레일
-└─ worksheet/         ← 내 업무를 셋으로 쪼개는 종이. 오전에 쓰고 오후에 쓴다
-```
+하루 종일 "지금 어느 폴더에 있어야 하지"가 가장 자주 막히는 지점이라,
+먼저 봐 두면 좋습니다.
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/AUTONOMOUS-PCC-Inc/.github/main/mirrors/assets/agent-layout.svg" alt="폴더 지도 — 클론에 따라오는 것, 직접 채우는 것, 끝까지 건드리지 않는 것을 색으로 구분" width="100%">
+</div>
 
 기억할 것은 둘입니다. **오전에 고치는 파일은 `codex-demo/daily_report.py` 하나**,
 **`tests/` 와 `data/` 는 끝까지 건드리지 않습니다.**
@@ -81,12 +78,12 @@ aypi-agent-tutorial/
 
 깨진 프로그램을 Codex에게 고치게 하고, **그 과정을 눈으로 봅니다.**
 
-```
-테스트 실행  →  빨간 걸 읽음  →  파일 수정  →  다시 실행  →  초록
-   (관찰)        (판단)         (행동)        (관찰)
-```
+<div align="center">
+<img src="https://raw.githubusercontent.com/AUTONOMOUS-PCC-Inc/.github/main/mirrors/assets/agent-loop.svg" alt="에이전트 루프 — 돌린다, 돌아온 걸 읽는다, 한 군데 고친다. 오전엔 Codex로 오후엔 N8N으로, 도구만 바뀌고 원은 그대로다" width="100%">
+</div>
 
 답을 한 번에 뱉는 게 아니라 **스스로 다음 할 일을 고르는 것** — 이게 에이전트입니다.
+그리고 **오후에 돌 원도 똑같이 생겼습니다.** 도구만 바뀝니다.
 
 ```bat
 cd codex-demo
@@ -104,12 +101,12 @@ python -X utf8 -m unittest discover -s tests -v
 오전과 **같은 일**을 N8N으로 합니다. 전원이 똑같은 레일을 한 번 돌린 다음,
 각자 자기 업무로 갈아 끼웁니다.
 
-```
-매일 아침 8시  →  뉴스 가져오기  →  한국어로 요약  →  나에게 메일
- (스케줄)        (HTTP · 공개 API)    (LLM 1회)        (Gmail)
-```
+<div align="center">
+<img src="https://raw.githubusercontent.com/AUTONOMOUS-PCC-Inc/.github/main/mirrors/assets/agent-rail.svg" alt="오후 레일 — 스케줄, 공개 API 호출, LLM 1회, Gmail. API 키 0개, 계정 1개. 양 끝만 바꾸면 내 업무가 된다" width="100%">
+</div>
 
 **API 키가 하나도 필요 없습니다.** 계정은 구글 하나뿐입니다.
+바꾸는 건 **양 끝 두 개**뿐이고, 가운데는 그대로 둡니다.
 
 > [!CAUTION]
 > **AI Agent 노드에 도구를 붙여 루프를 돌리지 마세요.** 실행 한 건에 모델 호출이
