@@ -15,17 +15,32 @@
 | 단계 | 어떻게 인증하나 |
 |---|---|
 | 뉴스 가져오기 | 공개 API라 인증 없음 |
-| 한국어로 요약 | credential 칸에서 **`Use Gateway credits`** 선택 — n8n이 대신 호출합니다 |
+| 한국어로 요약 | credential 칸에 **`Gateway credits`** 가 **이미 선택돼 있습니다** — n8n이 대신 호출합니다 |
 | 나에게 메일 | **`Sign in with Google`** 한 번. Google Cloud Console 설정은 필요 없습니다 |
 
 ## 가져오기
 
-N8N 화면 오른쪽 위 **⋯ → Import from File** 에서 [`rail-skeleton.json`](rail-skeleton.json)
-을 고릅니다.
+N8N 화면 오른쪽 위 **⋯ → Import → From file** 에서 [`rail-skeleton.json`](rail-skeleton.json)
+을 고릅니다. (`Import` 에 하위 메뉴가 한 단계 더 있습니다.)
 
 > [!TIP]
 > **망가뜨려도 괜찮습니다.** 다시 import하면 처음 상태로 돌아옵니다.
 > 1회차의 `git restore .` 와 같은 역할입니다.
+
+## ⚠ 모델을 바꾸지 마세요
+
+> [!CAUTION]
+> **Gateway credits 는 모든 모델을 받지 않습니다.** 지원하지 않는 모델을 고르면
+> 이렇게 죽습니다 —
+>
+> ```
+> 400  ai_gateway_request_error
+> "Gateway credits don't currently support this operation."
+> ```
+>
+> 문구가 **모델이 아니라 "operation" 을 탓해서** 읽어도 원인을 찾기 어렵습니다.
+> 레일은 **`gpt-4o-mini`** 로 맞춰 두었고 이 모델은 돌아가는 것을 확인했습니다.
+> 바꾸고 싶으면 먼저 이 레일을 끝까지 돌린 다음에 하세요.
 
 ## 반드시 지킬 것 — LLM은 한 번만
 
@@ -66,6 +81,16 @@ Codex에게 Code 노드에 넣을 자바스크립트를 쓰게 하세요. 거기
 ---
 
 > [!NOTE]
-> **상태: 골격 (2026-10-13).** `rail-skeleton.json` 은 JSON 구조만 확인했고
-> **아직 N8N에 실제로 import해 보지 않았습니다.** 노드 `typeVersion` 과 파라미터
-> 이름은 실측 때 교정합니다. 완성본과 변형 예시 JSON은 실측 뒤에 추가합니다.
+> **상태: 실측 검증 완료 (2026-10-19).** 클라우드 체험판 인스턴스에 실제로
+> import해서 **스케줄 → HTTP → LLM → Gmail 을 끝까지 돌렸습니다**(메일 수신 확인).
+> 그 과정에서 결함 3건을 고쳤습니다 —
+> `modelId` 를 resourceLocator 로, 모델을 Gateway 가 받는 `gpt-4o-mini` 로,
+> `sendTo` 를 직접 입력 칸으로(이전 값 `{{ $json.myEmail }}` 는 존재하지 않는
+> 필드라 수신자가 비었습니다).
+>
+> **실측값**: 1회 실행 = 입력 1,893 / 출력 367 토큰, LLM 노드 3.5초, 전체 4.2초.
+> 크레딧 잔액은 노드 credential 칸에 `Gateway credits  $N.NN left` 로 표시됩니다.
+> 실행 횟수 한도(체험판 1,000회)는 **프로덕션 실행만** 셉니다 — 수동 테스트는
+> 깎이지 않습니다.
+>
+> 변형 예시 JSON은 아직 없습니다.
