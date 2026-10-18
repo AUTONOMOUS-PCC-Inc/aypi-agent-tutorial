@@ -16,7 +16,10 @@
       "name": "매일 아침 8시",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
-      "position": [-200, 0]
+      "position": [
+        -200,
+        0
+      ]
     },
     {
       "parameters": {
@@ -27,11 +30,19 @@
       "name": "뉴스 가져오기",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [20, 0]
+      "position": [
+        20,
+        0
+      ]
     },
     {
       "parameters": {
-        "modelId": "gpt-4.1-mini",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini"
+        },
         "messages": {
           "values": [
             {
@@ -49,12 +60,15 @@
       "name": "한국어로 요약",
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 1.8,
-      "position": [240, 0],
-      "notes": "credential 칸에서 'Use Gateway credits' 를 고른다 — API 키 불필요"
+      "position": [
+        240,
+        0
+      ],
+      "notes": "credential 은 'Gateway credits' 가 이미 선택돼 있다 — API 키 불필요. ⚠ 모델을 바꾸려면 Gateway 지원 모델이어야 한다 (gpt-4.1-mini 는 400 으로 거부됨)"
     },
     {
       "parameters": {
-        "sendTo": "={{ $json.myEmail }}",
+        "sendTo": "여기에_내_메일주소@gmail.com",
         "subject": "=오늘의 기술 뉴스 요약",
         "emailType": "text",
         "message": "={{ $json.message.content }}",
@@ -64,19 +78,46 @@
       "name": "나에게 메일",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
-      "position": [460, 0],
-      "notes": "credential 은 'Sign in with Google' 한 번이면 끝 — Google Cloud 설정 불필요"
+      "position": [
+        460,
+        0
+      ],
+      "notes": "credential 은 'Sign in with Google' 한 번이면 끝 — Google Cloud 설정 불필요. To 칸에 내 메일 주소를 직접 적는다"
     }
   ],
   "connections": {
     "매일 아침 8시": {
-      "main": [[{ "node": "뉴스 가져오기", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "뉴스 가져오기",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "뉴스 가져오기": {
-      "main": [[{ "node": "한국어로 요약", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "한국어로 요약",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     },
     "한국어로 요약": {
-      "main": [[{ "node": "나에게 메일", "type": "main", "index": 0 }]]
+      "main": [
+        [
+          {
+            "node": "나에게 메일",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "settings": {
