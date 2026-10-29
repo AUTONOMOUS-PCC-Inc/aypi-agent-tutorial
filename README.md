@@ -1,13 +1,13 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/AUTONOMOUS-PCC-Inc/.github/main/mirrors/assets/agent-banner.svg" alt="바이브코딩 캠프 3회차 — 매주 반복하는 일 하나를 에이전트에게 넘긴다. 오전엔 코드로, 오후엔 노코드로." width="100%">
+<img src="https://raw.githubusercontent.com/AUTONOMOUS-PCC-Inc/.github/main/mirrors/assets/agent-banner.svg" alt="바이브코딩 캠프 4회차 — 매주 반복하는 일 하나를 에이전트에게 넘긴다. 오전엔 코드로, 오후엔 노코드로." width="100%">
 
 ### 매주 반복하는 일 하나를, 오늘 안에 에이전트에게 넘긴다.
 
-AUTONOMOUS PCC 바이브코딩 캠프 **3회차(자동화 에이전트 개발)** 실습 저장소입니다.<br>
+AUTONOMOUS PCC 바이브코딩 캠프 **4회차(자동화 에이전트 개발)** 실습 저장소입니다.<br>
 오전에는 **코드로**, 오후에는 **노코드로** — 같은 일을 두 가지 방식으로 자동화합니다.
 
-![Day](https://img.shields.io/badge/과정-3회차%20하루-0B1B33?style=for-the-badge)
+![Day](https://img.shields.io/badge/과정-4회차%20하루-0B1B33?style=for-the-badge)
 ![AM](https://img.shields.io/badge/오전-Codex-1E6FD9?style=for-the-badge)
 ![PM](https://img.shields.io/badge/오후-N8N-7C3AED?style=for-the-badge)
 ![Key](https://img.shields.io/badge/API%20키-0개-16A34A?style=for-the-badge)
@@ -23,7 +23,7 @@ AUTONOMOUS PCC 바이브코딩 캠프 **3회차(자동화 에이전트 개발)**
 
 > [!IMPORTANT]
 > **오늘은 새로 설치할 게 없습니다.** Codex는 1회차(10/31)에 깔았고,
-> N8N 계정은 2회차(11/1)에 만들었습니다. 둘 다 그대로 씁니다.
+> N8N 계정은 3회차(11/1)에 만들었습니다. 둘 다 그대로 씁니다.
 
 ```bat
 git clone https://github.com/AUTONOMOUS-PCC-Inc/aypi-agent-tutorial.git
@@ -33,7 +33,7 @@ cd aypi-agent-tutorial
 | 준비물 | 어디서 왔나 | 확인하는 법 |
 |---|---|---|
 | **Codex** 로그인 | 1회차에서 깐 것 | `codex --version` |
-| **N8N** 계정 | 2회차에서 가입한 것 | 로그인이 되면 끝 |
+| **N8N** 계정 | 3회차에서 가입한 것 | 로그인이 되면 끝 |
 | **파이썬** | 1회차 conda 환경 `aypi-car` | `conda activate aypi-car` 후 `python --version` |
 | **구글 계정** | 각자 쓰던 것 | 오후에 메일 보낼 때 씁니다 |
 
@@ -137,11 +137,12 @@ python -X utf8 -m unittest discover -s tests -v
 |   Aaron Yoon    |
 
 1회차 실습 저장소는 [`aypi-car-tutorial`](https://github.com/AUTONOMOUS-PCC-Inc/aypi-car-tutorial),
-2회차는 [`aypi-metaverse-tutorial`](https://github.com/AUTONOMOUS-PCC-Inc/aypi-metaverse-tutorial) 입니다.
+2회차는 [`aypi-turtlebot-tutorial`](https://github.com/AUTONOMOUS-PCC-Inc/aypi-turtlebot-tutorial),
+3회차는 [`aypi-metaverse-tutorial`](https://github.com/AUTONOMOUS-PCC-Inc/aypi-metaverse-tutorial) 입니다.
 
 ---
 
 <div align="center">
-<sub><strong>AUTONOMOUS PCC, Inc.</strong> · (주)오토노머스피씨씨 — 바이브코딩 캠프 3회차 실습</sub><br>
+<sub><strong>AUTONOMOUS PCC, Inc.</strong> · (주)오토노머스피씨씨 — 바이브코딩 캠프 4회차 실습</sub><br>
 <sub><a href="https://github.com/AUTONOMOUS-PCC-Inc">github.com/AUTONOMOUS-PCC-Inc</a></sub>
 </div>
