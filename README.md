@@ -22,8 +22,8 @@ AUTONOMOUS PCC 바이브코딩 캠프 **4회차(자동화 에이전트 개발)**
 ## 시작하기
 
 > [!IMPORTANT]
-> **오늘은 새로 설치할 게 없습니다.** Codex는 1회차(10/31)에 깔았고,
-> N8N 계정은 3회차(11/1)에 만들었습니다. 둘 다 그대로 씁니다.
+> **오늘은 새로 설치할 게 없습니다.** Codex는 1회차에 깔았고,
+> N8N 계정은 3회차에 만들었습니다. 둘 다 그대로 씁니다.
 
 ```bat
 git clone https://github.com/AUTONOMOUS-PCC-Inc/aypi-agent-tutorial.git
